@@ -76,69 +76,71 @@ echo "Copy GOSSIP files to MN3!"
 sudo cp /root/gossipcoin* /home/gossipmn3
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/gossipcoin*
 
-sudo rm -rf /root/stamp*
+sudo rm /root/gossipcoin*
 
-sudo rm -rf /home/stampmn1/.stamp/
-CONF_DIR=/home/stampmn1/.stamp/
-CONF_FILE=stamp.conf
+sudo rm -rf /home/gossipmn1/.gossipcoin/
+CONF_DIR=/home/gossipmn1/.gossipcoin/
+CONF_FILE=gossipcoin.conf
 mkdir -p $CONF_DIR
-echo "rpcuser=stampcoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${STAMP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcuser=gossipcoinrpc" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${GOSSIP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${STAMP_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${GOSSIP_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
-echo "port=43452" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP1}:43452" >> $CONF_DIR/$CONF_FILE
-sudo chown -R stampmn1:stampmn1 /home/stampmn1/.stamp/
-sudo chown 500 /home/stampmn1/.stamp/stamp.conf
+echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
+sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/.gossipcoin/
+sudo chown 500 /home/gossipmn1/.gossipcoin/gossipcoin.conf
 
-sudo rm -rf /home/stampmn2/.stamp/
-CONF_DIR=/home/stampmn2/.stamp/
+sudo rm -rf /home/gossipmn2/.gossipcoin/
+CONF_DIR=/home/gossipmn2/.gossipcoin/
+CONF_FILE=gossipcoin.conf
 mkdir -p $CONF_DIR
-echo "rpcuser=stampcoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${STAMP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcuser=gossipcoinrpc" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${GOSSIP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${STAMP_RPC_PORT2}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${GOSSIP_RPC_PORT2}" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
-echo "port=43452" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP2}:43452" >> $CONF_DIR/$CONF_FILE
-sudo chown -R stampmn2:stampmn2 /home/stampmn2/.stamp/
-sudo chown 500 /home/stampmn2/.stamp/stamp.conf
+echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP2}:22123" >> $CONF_DIR/$CONF_FILE
+sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/.gossipcoin/
+sudo chown 500 /home/gossipmn2/.gossipcoin/gossipcoin.conf
 
-sudo rm -rf /home/stampmn3/.stamp/
-CONF_DIR=/home/stampmn3/.stamp/
+sudo rm -rf /home/gossipmn3/.gossipcoin/
+CONF_DIR=/home/gossipmn3/.gossipcoin/
+CONF_FILE=gossipcoin.conf
 mkdir -p $CONF_DIR
-echo "rpcuser=stampcoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${STAMP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcuser=gossipcoinrpc" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${GOSSIP_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${STAMP_RPC_PORT3}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${GOSSIP_RPC_PORT3}" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
-echo "port=43452" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP3}:43452" >> $CONF_DIR/$CONF_FILE
-sudo chown -R stampmn3:stampmn3 /home/stampmn3/.stamp/
-sudo chown 500 /home/stampmn3/.stamp/stamp.conf
+echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP3}:22123" >> $CONF_DIR/$CONF_FILE
+sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/.gossipcoin/
+sudo chown 500 /home/gossipmn3/.gossipcoin/gossipcoin.conf
 
-sudo tee /etc/systemd/system/stampmn1.service <<EOF
+sudo tee /etc/systemd/system/gossipmn1.service <<EOF
 [Unit]
-Description=STAMP Coin, distributed currency daemon
+Description=GOSSIP Coin, distributed currency daemon
 After=syslog.target network.target
 
 [Service]
 Type=forking
-User=stampmn1
-Group=stampmn1
-WorkingDirectory=/home/stampmn1/
-ExecStart=/home/stampmn1/stampd
-ExecStop=/home/stampmn1/stamp-cli stop
+User=gossipmn1
+Group=gossipmn1
+WorkingDirectory=/home/gossipmn1/
+ExecStart=/home/gossipmn1/gossipcoind
+ExecStop=/home/gossipmn1/gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -152,18 +154,18 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo tee /etc/systemd/system/stampmn2.service <<EOF
+sudo tee /etc/systemd/system/gossipmn2.service <<EOF
 [Unit]
-Description=STAMP Coin, distributed currency daemon
+Description=GOSSIP Coin, distributed currency daemon
 After=syslog.target network.target
 
 [Service]
 Type=forking
-User=stampmn2
-Group=stampmn2
-WorkingDirectory=/home/stampmn2/
-ExecStart=/home/stampmn2/stampd
-ExecStop=/home/stampmn2/stamp-cli stop
+User=gossipmn2
+Group=gossipmn2
+WorkingDirectory=/home/gossipmn2/
+ExecStart=/home/gossipmn2/gossipcoind
+ExecStop=/home/gossipmn2/gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -177,18 +179,18 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo tee /etc/systemd/system/stampmn3.service <<EOF
+sudo tee /etc/systemd/system/gossipmn3.service <<EOF
 [Unit]
-Description=STAMP Coin, distributed currency daemon
+Description=GOSSIP Coin, distributed currency daemon
 After=syslog.target network.target
 
 [Service]
 Type=forking
-User=stampmn3
-Group=stampmn3
-WorkingDirectory=/home/stampmn3/
-ExecStart=/home/stampmn3/stampd
-ExecStop=/home/stampmn3/stamp-cli stop
+User=gossipmn3
+Group=gossipmn3
+WorkingDirectory=/home/gossipmn3/
+ExecStart=/home/gossipmn3/gossipcoind
+ExecStop=/home/gossipmn3/gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -202,43 +204,43 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo -H -u stampmn1 /home/stampmn1/stampd
-echo "Booting STAMP MN1 and creating keypool"
+sudo -H -u gossipmn1 /home/gossipmn1/gossipcoind
+echo "Booting GOSSIP MN1 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u stampmn1 /home/stampmn1/stamp-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP1}:43452\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/stampmn1/.stamp/stamp.conf
-sudo -H -u stampmn1 /home/stampmn1/stamp-cli stop
-sudo systemctl enable stampmn1
-sudo systemctl start stampmn1
+MNGENKEY1=`sudo -H -u gossipmn1 /home/gossipmn1/gossipcoin-cli masternode genkey`
+echo -e "#masternode=1\n#masternodeaddress=${IP1}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn1/.gossipcoin/gossipcoin.conf
+sudo -H -u gossipmn1 /home/gossipmn1/gossipcoin-cli stop
+sudo systemctl enable gossipmn1
+sudo systemctl start gossipmn1
 
-sudo -H -u stampmn2 /home/stampmn2/stampd
-echo "Booting STAMP MN2 and creating keypool"
+sudo -H -u gossipmn2 /home/gossipmn2/gossipcoind
+echo "Booting GOSSIP MN2 and creating keypool"
 sleep 10
-MNGENKEY2=`sudo -H -u stampmn2 /home/stampmn2/stamp-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP2}:43452\n#masternodeprivkey=${MNGENKEY2}" | sudo tee -a /home/stampmn2/.stamp/stamp.conf
-sudo -H -u stampmn2 /home/stampmn2/stamp-cli stop
-sudo systemctl enable stampmn2
-sudo systemctl start stampmn2
+MNGENKEY1=`sudo -H -u gossipmn2 /home/gossipmn2/gossipcoin-cli masternode genkey`
+echo -e "#masternode=1\n#masternodeaddress=${IP2}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn2/.gossipcoin/gossipcoin.conf
+sudo -H -u gossipmn2 /home/gossipmn2/gossipcoin-cli stop
+sudo systemctl enable gossipmn2
+sudo systemctl start gossipmn2
 
-sudo -H -u stampmn3 /home/stampmn3/stampd
-echo "Booting STAMP MN3 and creating keypool"
+sudo -H -u gossipmn3 /home/gossipmn3/gossipcoind
+echo "Booting GOSSIP MN3 and creating keypool"
 sleep 10
-MNGENKEY3=`sudo -H -u stampmn3 /home/stampmn3/stamp-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP3}:43452\n#masternodeprivkey=${MNGENKEY3}" | sudo tee -a /home/stampmn3/.stamp/stamp.conf
-sudo -H -u stampmn3 /home/stampmn3/stamp-cli stop
-sudo systemctl enable stampmn3
-sudo systemctl start stampmn3
+MNGENKEY1=`sudo -H -u gossipmn3 /home/gossipmn3/gossipcoin-cli masternode genkey`
+echo -e "#masternode=1\n#masternodeaddress=${IP3}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn3/.gossipcoin/gossipcoin.conf
+sudo -H -u gossipmn3 /home/gossipmn3/gossipcoin-cli stop
+sudo systemctl enable gossipmn3
+sudo systemctl start gossipmn3
 
 echo " "
 echo " "
 echo "==============================="
-echo "STAMP Coin Masternode installed!"
+echo "GOSSIP Coin Masternode installed!"
 echo "==============================="
 echo "Copy and keep that information in secret:"
 echo "Masternode #1 key: ${MNGENKEY1}"
 echo "Masternode #2 key: ${MNGENKEY2}"
 echo "Masternode #3 key: ${MNGENKEY3}"
-echo "SSH password for user \"stampmn1@${IP1},stampmn2@${IP2},stampmn3@${IP3}\": ${STAMP_USER_PASS}"
+echo "SSH password for user \"gossipmn1@${IP1},gossipmn2@${IP2},gossipmn3@${IP3}\": ${GOSSIP_USER_PASS}"
 echo "Prepared masternode.conf string:"
 echo "MN1 ${IP1}:43452 ${MNGENKEY1} INPUTTX INPUTINDEX"
 echo "MN2 ${IP2}:43452 ${MNGENKEY2} INPUTTX INPUTINDEX"
