@@ -94,6 +94,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP1}:22124" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/.gossipcoin/
 sudo chown 500 /home/gossipmn1/.gossipcoin/gossipcoin.conf
 
@@ -110,6 +111,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP2}:22134" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/.gossipcoin/
 sudo chown 500 /home/gossipmn2/.gossipcoin/gossipcoin.conf
 
@@ -126,6 +128,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP3}:22144" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/.gossipcoin/
 sudo chown 500 /home/gossipmn3/.gossipcoin/gossipcoin.conf
 
