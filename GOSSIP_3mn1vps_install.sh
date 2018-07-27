@@ -1,19 +1,19 @@
 #/bin/bash
 
 ################################################################################
-# Author:   Supawat A
-# Date:     July, 16th 2018
+# Author:   Phongthep K
+# Date:     July, 27th 2018
 # 
 # Program:
 #
-#   Install STAMP Coin masternode on clean VPS with Ubuntu 16.04 
+#   Install GOSSIP Coin masternode on clean VPS with Ubuntu 16.04 
 #	Need 3 IP on VPS
 ################################################################################
 
 echo && echo 
 echo "****************************************************************************"
 echo "*                                                                          *"
-echo "*  This script will install and configure your STAMP Coin masternode.      *"
+echo "*  This script will install and configure your GOSSIP Coin masternode.     *"
 echo "*                                                                          *"
 echo "****************************************************************************"
 echo && echo
@@ -27,12 +27,14 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-STAMP_LINUX_URL=https://github.com/zSAM-Project/stamp/releases/download/v2.0.0.1/stamp-2.0.0-x86_64-linux-gnu.tar.gz
+sudo apt-get install unzip -y
 
-STAMP_RPC_PASS=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 ; echo ""`
-STAMP_RPC_PORT1=43453
-STAMP_RPC_PORT2=43463
-STAMP_RPC_PORT3=43473
+GOSSIP_LINUX_URL=https://github.com/g0ssipcoin/GossipCoinCore/releases/download/v1.1.0.0/Linux-gossipcoin.zip
+
+GOSSIP_RPC_PASS=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 ; echo ""`
+GOSSIP_RPC_PORT1=22122
+GOSSIP_RPC_PORT2=22132
+GOSSIP_RPC_PORT3=22142
 
 echo "Type the IP #1 of this server, followed by [ENTER]:"
 read IP1
@@ -44,38 +46,35 @@ echo "Type the IP #3 of this server, followed by [ENTER]:"
 read IP3
 echo ""
 echo "Enter Masternode Account Login Password"
-read STAMP_USER_PASS
+read GOSSIP_USER_PASS
 
-sudo userdel stampmn1
-sudo useradd -U -m stampmn1 -s /bin/bash
-echo "stampmn1:${STAMP_USER_PASS}" | sudo chpasswd
+sudo userdel gossipmn1
+sudo useradd -U -m gossipmn1 -s /bin/bash
+echo "gossipmn1:${GOSSIP_USER_PASS}" | sudo chpasswd
 
-sudo userdel stampmn2
-sudo useradd -U -m stampmn2 -s /bin/bash
-echo "stampmn2:${STAMP_USER_PASS}" | sudo chpasswd
+sudo userdel gossipmn2
+sudo useradd -U -m gossipmn2 -s /bin/bash
+echo "gossipmn2:${GOSSIP_USER_PASS}" | sudo chpasswd
 
-sudo userdel stampmn3
-sudo useradd -U -m stampmn3 -s /bin/bash
-echo "stampmn3:${STAMP_USER_PASS}" | sudo chpasswd
+sudo userdel gossipmn3
+sudo useradd -U -m gossipmn3 -s /bin/bash
+echo "gossipmn3:${GOSSIP_USER_PASS}" | sudo chpasswd
 
-sudo wget $STAMP_LINUX_URL --directory-prefix /root/
-sudo tar -xzvf /root/stamp-*-x86_64-linux-gnu.tar.gz -C /root/
-sudo rm /root/stamp-*-x86_64-linux-gnu.tar.gz
+sudo wget $GOSSIP_LINUX_URL --directory-prefix /root/
+sudo unzip /root/Linux-gossipcoin.zip
+sudo rm /root/Linux-gossipcoin.zip
 
-echo "Copy STAMP files to MN1!"
-sudo cp /root/stamp*/bin/stampd /home/stampmn1
-sudo cp /root/stamp*/bin/stamp-cli /home/stampmn1
-sudo chown -R stampmn1:stampmn1 /home/stampmn1/stamp*
+echo "Copy GOSSIP files to MN1!"
+sudo cp /root/gossipcoin* /home/gossipmn1
+sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/gossipcoin*
 
-echo "Copy STAMP files to MN2!"
-sudo cp /root/stamp*/bin/stampd /home/stampmn2
-sudo cp /root/stamp*/bin/stamp-cli /home/stampmn2
-sudo chown -R stampmn2:stampmn2 /home/stampmn2/stamp*
+echo "Copy GOSSIP files to MN2!"
+sudo cp /root/gossipcoin* /home/gossipmn2
+sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/gossipcoin*
 
-echo "Copy STAMP files to MN3!"
-sudo cp /root/stamp*/bin/stampd /home/stampmn3
-sudo cp /root/stamp*/bin/stamp-cli /home/stampmn3
-sudo chown -R stampmn3:stampmn3 /home/stampmn3/stamp*
+echo "Copy GOSSIP files to MN3!"
+sudo cp /root/gossipcoin* /home/gossipmn3
+sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/gossipcoin*
 
 sudo rm -rf /root/stamp*
 
