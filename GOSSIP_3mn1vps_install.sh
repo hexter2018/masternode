@@ -77,7 +77,7 @@ sudo chmod 755 /home/gossipmn2/gossipcoin*
 echo "Copy GOSSIP files to MN3!"
 sudo cp /root/gossipcoin* /home/gossipmn3
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/gossipcoin*
-sudo chmod 755 /home/gossipmn2/gossipcoin*
+sudo chmod 755 /home/gossipmn3/gossipcoin*
 
 sudo rm /root/gossipcoin*
 
@@ -111,7 +111,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP2}:22134" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP2}:22124" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/.gossipcoin/
 sudo chown 500 /home/gossipmn2/.gossipcoin/gossipcoin.conf
 
@@ -128,7 +128,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP3}:22144" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP3}:22124" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/.gossipcoin/
 sudo chown 500 /home/gossipmn3/.gossipcoin/gossipcoin.conf
 
