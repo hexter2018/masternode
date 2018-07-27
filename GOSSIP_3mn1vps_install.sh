@@ -67,17 +67,17 @@ sudo rm /root/Linux-gossipcoin.zip
 echo "Copy GOSSIP files to MN1!"
 sudo cp /root/gossipcoin* /home/gossipmn1
 sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/gossipcoin*
-sudo chmod 755 gossipcoin*
+sudo chmod 755 /home/gossipmn1/gossipcoin*
 
 echo "Copy GOSSIP files to MN2!"
 sudo cp /root/gossipcoin* /home/gossipmn2
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/gossipcoin*
-sudo chmod 755 gossipcoin*
+sudo chmod 755 /home/gossipmn2/gossipcoin*
 
 echo "Copy GOSSIP files to MN3!"
 sudo cp /root/gossipcoin* /home/gossipmn3
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/gossipcoin*
-sudo chmod 755 gossipcoin*
+sudo chmod 755 /home/gossipmn2/gossipcoin*
 
 sudo rm /root/gossipcoin*
 
@@ -94,7 +94,6 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/.gossipcoin/
 sudo chown 500 /home/gossipmn1/.gossipcoin/gossipcoin.conf
 
@@ -111,7 +110,6 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP2}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/.gossipcoin/
 sudo chown 500 /home/gossipmn2/.gossipcoin/gossipcoin.conf
 
@@ -128,7 +126,6 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP3}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/.gossipcoin/
 sudo chown 500 /home/gossipmn3/.gossipcoin/gossipcoin.conf
 
@@ -245,9 +242,9 @@ echo "Masternode #2 key: ${MNGENKEY2}"
 echo "Masternode #3 key: ${MNGENKEY3}"
 echo "SSH password for user \"gossipmn1@${IP1},gossipmn2@${IP2},gossipmn3@${IP3}\": ${GOSSIP_USER_PASS}"
 echo "Prepared masternode.conf string:"
-echo "MN1 ${IP1}:43452 ${MNGENKEY1} INPUTTX INPUTINDEX"
-echo "MN2 ${IP2}:43452 ${MNGENKEY2} INPUTTX INPUTINDEX"
-echo "MN3 ${IP3}:43452 ${MNGENKEY3} INPUTTX INPUTINDEX"
+echo "MN1 ${IP1}:22123 ${MNGENKEY1} INPUTTX INPUTINDEX"
+echo "MN2 ${IP2}:22123 ${MNGENKEY2} INPUTTX INPUTINDEX"
+echo "MN3 ${IP3}:22123 ${MNGENKEY3} INPUTTX INPUTINDEX"
 
 exit 0
 
