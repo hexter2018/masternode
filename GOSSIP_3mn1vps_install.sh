@@ -67,14 +67,17 @@ sudo rm /root/Linux-gossipcoin.zip
 echo "Copy GOSSIP files to MN1!"
 sudo cp /root/gossipcoin* /home/gossipmn1
 sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/gossipcoin*
+sudo chmod 755 gossipcoin*
 
 echo "Copy GOSSIP files to MN2!"
 sudo cp /root/gossipcoin* /home/gossipmn2
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/gossipcoin*
+sudo chmod 755 gossipcoin*
 
 echo "Copy GOSSIP files to MN3!"
 sudo cp /root/gossipcoin* /home/gossipmn3
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/gossipcoin*
+sudo chmod 755 gossipcoin*
 
 sudo rm /root/gossipcoin*
 
@@ -139,8 +142,8 @@ Type=forking
 User=gossipmn1
 Group=gossipmn1
 WorkingDirectory=/home/gossipmn1/
-ExecStart=/home/gossipmn1/gossipcoind
-ExecStop=/home/gossipmn1/gossipcoin-cli stop
+ExecStart=/home/gossipmn1/./gossipcoind
+ExecStop=/home/gossipmn1/./gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -164,8 +167,8 @@ Type=forking
 User=gossipmn2
 Group=gossipmn2
 WorkingDirectory=/home/gossipmn2/
-ExecStart=/home/gossipmn2/gossipcoind
-ExecStop=/home/gossipmn2/gossipcoin-cli stop
+ExecStart=/home/gossipmn2/./gossipcoind
+ExecStop=/home/gossipmn2/./gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -189,8 +192,8 @@ Type=forking
 User=gossipmn3
 Group=gossipmn3
 WorkingDirectory=/home/gossipmn3/
-ExecStart=/home/gossipmn3/gossipcoind
-ExecStop=/home/gossipmn3/gossipcoin-cli stop
+ExecStart=/home/gossipmn3/./gossipcoind
+ExecStop=/home/gossipmn3/./gossipcoin-cli stop
 
 Restart=on-failure
 RestartSec=120
@@ -204,30 +207,30 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo -H -u gossipmn1 /home/gossipmn1/gossipcoind
+sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoind
 echo "Booting GOSSIP MN1 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u gossipmn1 /home/gossipmn1/gossipcoin-cli masternode genkey`
+MNGENKEY1=`sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoin-cli masternode genkey`
 echo -e "#masternode=1\n#masternodeaddress=${IP1}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn1/.gossipcoin/gossipcoin.conf
-sudo -H -u gossipmn1 /home/gossipmn1/gossipcoin-cli stop
+sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoin-cli stop
 sudo systemctl enable gossipmn1
 sudo systemctl start gossipmn1
 
-sudo -H -u gossipmn2 /home/gossipmn2/gossipcoind
+sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoind
 echo "Booting GOSSIP MN2 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u gossipmn2 /home/gossipmn2/gossipcoin-cli masternode genkey`
+MNGENKEY1=`sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli masternode genkey`
 echo -e "#masternode=1\n#masternodeaddress=${IP2}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn2/.gossipcoin/gossipcoin.conf
-sudo -H -u gossipmn2 /home/gossipmn2/gossipcoin-cli stop
+sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli stop
 sudo systemctl enable gossipmn2
 sudo systemctl start gossipmn2
 
-sudo -H -u gossipmn3 /home/gossipmn3/gossipcoind
+sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoind
 echo "Booting GOSSIP MN3 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u gossipmn3 /home/gossipmn3/gossipcoin-cli masternode genkey`
+MNGENKEY1=`sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli masternode genkey`
 echo -e "#masternode=1\n#masternodeaddress=${IP3}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn3/.gossipcoin/gossipcoin.conf
-sudo -H -u gossipmn3 /home/gossipmn3/gossipcoin-cli stop
+sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli stop
 sudo systemctl enable gossipmn3
 sudo systemctl start gossipmn3
 
