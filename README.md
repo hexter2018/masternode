@@ -8,6 +8,10 @@ GOSSIP 3 MN in 1 VPS:
 wget https://raw.githubusercontent.com/hexter2018/masternode/master/GOSSIP_3mn1vps_install.sh && sudo chmod 755 GOSSIP_3mn1vps_install.sh && ./GOSSIP_3mn1vps_install.sh
 </pre></code>
 
+VYIGRAT 3 MN in 1 VPS:
+<pre><code>
+wget https://raw.githubusercontent.com/hexter2018/masternode/master/VYIGRAT_3mn1vps_install.sh && sudo chmod 755 VYIGRAT_3mn1vps_install.sh && ./VYIGRAT_3mn1vps_install.sh
+</pre></code>
 License
 Released under the MIT license.
 
