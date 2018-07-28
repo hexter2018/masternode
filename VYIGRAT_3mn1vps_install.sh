@@ -92,7 +92,7 @@ echo "rpcport=${VYIGRAT_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
 echo "port=12698" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
-echo "daemon=0" >> $CONF_DIR/$CONF_FILE
+echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "bind=${IP1}:12698" >> $CONF_DIR/$CONF_FILE
 sudo chown -R vyigratmn1:vyigratmn1 /home/vyigratmn1/.vyigrat/
@@ -109,7 +109,7 @@ echo "rpcport=${VYIGRAT_RPC_PORT2}" >> $CONF_DIR/$CONF_FILE
 echo "port=12698" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
-echo "daemon=0" >> $CONF_DIR/$CONF_FILE
+echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "bind=${IP2}:12698" >> $CONF_DIR/$CONF_FILE
 sudo chown -R vyigratmn2:vyigratmn2 /home/vyigratmn2/.vyigrat/
@@ -126,7 +126,7 @@ echo "rpcport=${VYIGRAT_RPC_PORT3}" >> $CONF_DIR/$CONF_FILE
 echo "port=12698" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
-echo "daemon=0" >> $CONF_DIR/$CONF_FILE
+echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "bind=${IP3}:12698" >> $CONF_DIR/$CONF_FILE
 sudo chown -R vyigratmn3:vyigratmn3 /home/vyigratmn3/.vyigrat/
