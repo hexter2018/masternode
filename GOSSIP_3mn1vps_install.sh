@@ -222,7 +222,7 @@ sudo systemctl start gossipmn1
 sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoind
 echo "Booting GOSSIP MN2 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli masternode genkey`
+MNGENKEY2=`sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli masternode genkey`
 echo -e "#masternode=1\n#externalip=${IP2}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn2/.gossipcoin/gossipcoin.conf
 sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli stop
 sudo systemctl enable gossipmn2
@@ -231,7 +231,7 @@ sudo systemctl start gossipmn2
 sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoind
 echo "Booting GOSSIP MN3 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli masternode genkey`
+MNGENKEY3=`sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli masternode genkey`
 echo -e "#masternode=1\n#externalip=${IP3}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn3/.gossipcoin/gossipcoin.conf
 sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli stop
 sudo systemctl enable gossipmn3
