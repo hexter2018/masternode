@@ -94,7 +94,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP1}:22122" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn1:gossipmn1 /home/gossipmn1/.gossipcoin/
 sudo chown 500 /home/gossipmn1/.gossipcoin/gossipcoin.conf
 
@@ -111,7 +111,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP2}:22122" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP2}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn2:gossipmn2 /home/gossipmn2/.gossipcoin/
 sudo chown 500 /home/gossipmn2/.gossipcoin/gossipcoin.conf
 
@@ -128,7 +128,7 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
-echo "bind=${IP3}:22122" >> $CONF_DIR/$CONF_FILE
+echo "bind=${IP3}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R gossipmn3:gossipmn3 /home/gossipmn3/.gossipcoin/
 sudo chown 500 /home/gossipmn3/.gossipcoin/gossipcoin.conf
 
@@ -211,7 +211,7 @@ sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoind
 echo "Booting GOSSIP MN1 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoin-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP1}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn1/.gossipcoin/gossipcoin.conf
+echo -e "#masternode=1\n#externalip=${IP1}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn1/.gossipcoin/gossipcoin.conf
 sudo -H -u gossipmn1 /home/gossipmn1/./gossipcoin-cli stop
 sudo systemctl enable gossipmn1
 sudo systemctl start gossipmn1
@@ -220,7 +220,7 @@ sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoind
 echo "Booting GOSSIP MN2 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP2}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn2/.gossipcoin/gossipcoin.conf
+echo -e "#masternode=1\n#externalip=${IP2}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn2/.gossipcoin/gossipcoin.conf
 sudo -H -u gossipmn2 /home/gossipmn2/./gossipcoin-cli stop
 sudo systemctl enable gossipmn2
 sudo systemctl start gossipmn2
@@ -229,7 +229,7 @@ sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoind
 echo "Booting GOSSIP MN3 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddress=${IP3}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn3/.gossipcoin/gossipcoin.conf
+echo -e "#masternode=1\n#externalip=${IP3}:22123\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/gossipmn3/.gossipcoin/gossipcoin.conf
 sudo -H -u gossipmn3 /home/gossipmn3/./gossipcoin-cli stop
 sudo systemctl enable gossipmn3
 sudo systemctl start gossipmn3
@@ -240,9 +240,9 @@ echo "==============================="
 echo "GOSSIP Coin Masternode installed!"
 echo "==============================="
 echo "Copy and keep that information in secret:"
-echo "Masternode #1 key: ${MNGENKEY1}"
-echo "Masternode #2 key: ${MNGENKEY2}"
-echo "Masternode #3 key: ${MNGENKEY3}"
+echo "externalip #1 key: ${MNGENKEY1}"
+echo "externalip #2 key: ${MNGENKEY2}"
+echo "externalip #3 key: ${MNGENKEY3}"
 echo "SSH password for user \"gossipmn1@${IP1},gossipmn2@${IP2},gossipmn3@${IP3}\": ${GOSSIP_USER_PASS}"
 echo "Prepared masternode.conf string:"
 echo "MN1 ${IP1}:22123 ${MNGENKEY1} INPUTTX INPUTINDEX"
