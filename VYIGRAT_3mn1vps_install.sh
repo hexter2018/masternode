@@ -202,7 +202,7 @@ sudo -H -u vyigratmn1 /home/vyigratmn1/vyigratd
 echo "Booting VYIGRAT MN1 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u vyigratmn1 /home/vyigratmn1/vyigrat-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddr=${IP1}:12698\n#masternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/vyigratmn1/.vyigrat/vyigrat.conf
+echo -e "masternode=1\nmasternodeaddr=${IP1}:12698\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/vyigratmn1/.vyigrat/vyigrat.conf
 sudo -H -u vyigratmn1 /home/vyigratmn1/vyigrat-cli stop
 sudo systemctl enable vyigratmn1
 sudo systemctl start vyigratmn1
@@ -211,7 +211,7 @@ sudo -H -u vyigratmn2 /home/vyigratmn2/vyigratd
 echo "Booting VYIGRAT MN2 and creating keypool"
 sleep 10
 MNGENKEY2=`sudo -H -u vyigratmn2 /home/vyigratmn2/vyigrat-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddr=${IP2}:12698\n#masternodeprivkey=${MNGENKEY2}" | sudo tee -a /home/vyigratmn2/.vyigrat/vyigrat.conf
+echo -e "masternode=1\nmasternodeaddr=${IP2}:12698\nmasternodeprivkey=${MNGENKEY2}" | sudo tee -a /home/vyigratmn2/.vyigrat/vyigrat.conf
 sudo -H -u vyigratmn2 /home/vyigratmn2/vyigrat-cli stop
 sudo systemctl enable vyigratmn2
 sudo systemctl start vyigratmn2
@@ -220,7 +220,7 @@ sudo -H -u vyigratmn3 /home/vyigratmn3/vyigratd
 echo "Booting VYIGRAT MN3 and creating keypool"
 sleep 10
 MNGENKEY3=`sudo -H -u vyigratmn3 /home/vyigratmn3/vyigrat-cli masternode genkey`
-echo -e "#masternode=1\n#masternodeaddr=${IP3}:12698\n#masternodeprivkey=${MNGENKEY3}" | sudo tee -a /home/vyigratmn3/.vyigrat/vyigrat.conf
+echo -e "masternode=1\nmasternodeaddr=${IP3}:12698\nmasternodeprivkey=${MNGENKEY3}" | sudo tee -a /home/vyigratmn3/.vyigrat/vyigrat.conf
 sudo -H -u vyigratmn3 /home/vyigratmn3/vyigrat-cli stop
 sudo systemctl enable vyigratmn3
 sudo systemctl start vyigratmn3
