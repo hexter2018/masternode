@@ -17,3 +17,9 @@ Released under the MIT license.
 
 Disclaimer
 Developer assume no liability and is not responsible for any misuse or damage caused by this program.
+
+Discord : hexter6819#6819
+
+Donate
+BTC : 3KnnwFZJokT6m2GhMAHtRWMMkkXm9UGnDM 
+ETH : 0xefaD0cb028B06cdec2B05a8BbE5dB4612cc8F205
