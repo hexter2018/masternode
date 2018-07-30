@@ -98,7 +98,7 @@ sudo -H -u telosmn1 /home/telosmn1/./transcendenced
 echo "Booting TELOS MN1 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u telosmn1 /home/telosmn1/./transcendence-cli masternode genkey`
-echo -e "masternode=1\nmasternodeaddr=${IP1}:12698\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/telosmn1/.transcendence/transcendence.conf
+echo -e "masternode=1\nmasternodeaddr=${IP1}:22123\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/telosmn1/.transcendence/transcendence.conf
 sudo -H -u telosmn1 /home/telosmn1/./transcendence-cli stop
 sudo systemctl enable telosmn1
 sudo systemctl start telosmn1
