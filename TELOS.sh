@@ -42,7 +42,7 @@ read TELOS_USER_PASS
 
 sudo userdel telosmn
 sudo useradd -U -m telosmn -s /bin/bash
-echo "telosmn:${VYIGRAT_USER_PASS}" | sudo chpasswd
+echo "telosmn:${TELOS_USER_PASS}" | sudo chpasswd
 
 sudo wget $TELOS_LINUX_URL --directory-prefix /root/
 sudo unzip /root/Linux.zip
@@ -62,7 +62,7 @@ mkdir -p $CONF_DIR
 echo "rpcuser=transcendencerpc" >> $CONF_DIR/$CONF_FILE
 echo "rpcpassword=${TELOS_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${VYIGRAT_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${TELOS_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
@@ -110,7 +110,7 @@ echo "TELOS Coin Masternode installed!"
 echo "==============================="
 echo "Copy and keep that information in secret:"
 echo "masternodeaddr #1 key: ${MNGENKEY1}"
-echo "SSH password for user \"telosmn@${IP1}\": ${VYIGRAT_USER_PASS}"
+echo "SSH password for user \"telosmn@${IP1}\": ${TELOS_USER_PASS}"
 echo "Prepared masternode.conf string:"
 echo "MN1 ${IP1}:22123 ${MNGENKEY1} INPUTTX INPUTINDEX"
 
