@@ -37,7 +37,7 @@ TELOS_RPC_PORT1=22124
 echo "Type the IP #1 of this server, followed by [ENTER]:"
 read IP1
 echo ""
-echo "Enter Masternode Account Login Password"
+echo "Enter Your Password"
 read TELOS_USER_PASS
 
 sudo userdel telosmn1
@@ -81,8 +81,8 @@ Type=forking
 User=telosmn1
 Group=telosmn1
 WorkingDirectory=/home/telosmn1/
-ExecStart=/home/telosmn1/transcendenced
-ExecStop=/home/telosmn1/transcendence-cli stop
+ExecStart=/home/telosmn1/./transcendenced
+ExecStop=/home/telosmn1/./transcendence-cli stop
 Restart=on-failure
 RestartSec=120
 PrivateTmp=true
@@ -94,12 +94,12 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo -H -u telosmn /home/telosmn1/transcendenced
+sudo -H -u telosmn /home/telosmn1/./transcendenced
 echo "Booting TELOS MN1 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u telosmn1 /home/telosmn1/transcendence-cli masternode genkey`
+MNGENKEY1=`sudo -H -u telosmn1 /home/telosmn1/./transcendence-cli masternode genkey`
 echo -e "masternode=1\nmasternodeaddr=${IP1}:12698\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/telosmn1/.transcendence/transcendence.conf
-sudo -H -u telosmn1 /home/telosmn1/transcendence-cli stop
+sudo -H -u telosmn1 /home/telosmn1/./transcendence-cli stop
 sudo systemctl enable telosmn1
 sudo systemctl start telosmn1
 
