@@ -72,7 +72,7 @@ echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R telosmn1:telosmn1 /home/telosmn1/.transcendence/
 sudo chown 500 /home/telosmn1/.transcendence/transcendence.conf
 
-sudo tee /etc/systemd/system/telosmn.service <<EOF
+sudo tee /etc/systemd/system/telosmn1.service <<EOF
 [Unit]
 Description=TELOS Coin, distributed currency daemon
 After=syslog.target network.target
@@ -94,7 +94,7 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo -H -u telosmn /home/telosmn1/./transcendenced
+sudo -H -u telosmn1 /home/telosmn1/./transcendenced
 echo "Booting TELOS MN1 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u telosmn1 /home/telosmn1/./transcendence-cli masternode genkey`
