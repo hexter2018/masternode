@@ -40,23 +40,23 @@ echo ""
 echo "Enter Masternode Account Login Password"
 read TELOS_USER_PASS
 
-sudo userdel telosmn
-sudo useradd -U -m telosmn -s /bin/bash
-echo "telosmn:${TELOS_USER_PASS}" | sudo chpasswd
+sudo userdel telosmn1
+sudo useradd -U -m telosmn1 -s /bin/bash
+echo "telosmn1:${TELOS_USER_PASS}" | sudo chpasswd
 
 sudo wget $TELOS_LINUX_URL --directory-prefix /root/
 sudo unzip /root/Linux.zip
 sudo rm /root/Linux.zip
 
-echo "Copy TELOS files to MN!"
-sudo cp /root/Linux/bin/transcendence* /home/telosmn
-sudo chown -R telosmn:telosmn /home/telosmn/transcendence*
-sudo chmod 755 /home/telosmn/transcendence*
+echo "Copy TELOS files to MN1!"
+sudo cp /root/Linux/bin/transcendence* /home/telosmn1
+sudo chown -R telosmn1:telosmn1 /home/telosmn1/transcendence*
+sudo chmod 755 /home/telosmn1/transcendence*
 
 sudo rm -rf /root/Linux/
 
-sudo rm -rf /home/telosmn/.transcendence/
-CONF_DIR=/home/telosmn/.transcendence/
+sudo rm -rf /home/telosmn1/.transcendence/
+CONF_DIR=/home/telosmn1/.transcendence/
 CONF_FILE=transcendence.conf
 mkdir -p $CONF_DIR
 echo "rpcuser=transcendencerpc" >> $CONF_DIR/$CONF_FILE
@@ -69,8 +69,8 @@ echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
-sudo chown -R telosmn:telosmn /home/telosmn/.transcendence/
-sudo chown 500 /home/telosmn/.transcendence/transcendence.conf
+sudo chown -R telosmn1:telosmn1 /home/telosmn1/.transcendence/
+sudo chown 500 /home/telosmn1/.transcendence/transcendence.conf
 
 sudo tee /etc/systemd/system/telosmn.service <<EOF
 [Unit]
@@ -78,11 +78,11 @@ Description=TELOS Coin, distributed currency daemon
 After=syslog.target network.target
 [Service]
 Type=forking
-User=telosmn
-Group=telosmn
-WorkingDirectory=/home/telosmn/
-ExecStart=/home/telosmn/transcendenced
-ExecStop=/home/telosmn/transcendence-cli stop
+User=telosmn1
+Group=telosmn1
+WorkingDirectory=/home/telosmn1/
+ExecStart=/home/telosmn1/transcendenced
+ExecStop=/home/telosmn1/transcendence-cli stop
 Restart=on-failure
 RestartSec=120
 PrivateTmp=true
@@ -94,14 +94,14 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-sudo -H -u telosmn /home/telosmn/transcendenced
-echo "Booting TELOS MN and creating keypool"
+sudo -H -u telosmn /home/telosmn1/transcendenced
+echo "Booting TELOS MN1 and creating keypool"
 sleep 10
-MNGENKEY1=`sudo -H -u telosmn /home/telosmn/transcendence-cli masternode genkey`
-echo -e "masternode=1\nmasternodeaddr=${IP1}:12698\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/telosmn/.transcendence/transcendence.conf
-sudo -H -u telosmn /home/telosmn/transcendence-cli stop
-sudo systemctl enable telosmn
-sudo systemctl start telosmn
+MNGENKEY1=`sudo -H -u telosmn1 /home/telosmn1/transcendence-cli masternode genkey`
+echo -e "masternode=1\nmasternodeaddr=${IP1}:12698\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/telosmn1/.transcendence/transcendence.conf
+sudo -H -u telosmn1 /home/telosmn1/transcendence-cli stop
+sudo systemctl enable telosmn1
+sudo systemctl start telosmn1
 
 echo " "
 echo " "
@@ -110,7 +110,7 @@ echo "TELOS Coin Masternode installed!"
 echo "==============================="
 echo "Copy and keep that information in secret:"
 echo "masternodeaddr #1 key: ${MNGENKEY1}"
-echo "SSH password for user \"telosmn@${IP1}\": ${TELOS_USER_PASS}"
+echo "SSH password for user \"telosmn1@${IP1}\": ${TELOS_USER_PASS}"
 echo "Prepared masternode.conf string:"
 echo "MN1 ${IP1}:22123 ${MNGENKEY1} INPUTTX INPUTINDEX"
 
