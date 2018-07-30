@@ -66,7 +66,7 @@ echo "rpcport=${TELOS_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
 echo "port=22123" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
-echo "daemon=1" >> $CONF_DIR/$CONF_FILE
+echo "daemon=0" >> $CONF_DIR/$CONF_FILE
 echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
 echo "bind=${IP1}:22123" >> $CONF_DIR/$CONF_FILE
 sudo chown -R telosmn1:telosmn1 /home/telosmn1/.transcendence/
