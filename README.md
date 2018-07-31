@@ -15,12 +15,12 @@ wget https://raw.githubusercontent.com/hexter2018/masternode/master/VYIGRAT_3mn1
 
 TELOS 1 MN:
 <pre><code>
-wget https://raw.githubusercontent.com/hexter2018/masternode/master/TELOS.sh && sudo chmod 755 TELOS.sh && ./TELOS.sh
+wget https://raw.githubusercontent.com/hexter2018/masternode/master/transcendence.sh && sudo chmod 755 transcendence.sh && ./transcendence.sh
 </pre></code>
 
 TELOS 3 MN in 1 VPS:
 <pre><code>
-wget https://raw.githubusercontent.com/hexter2018/masternode/master/telos_3mn1vps.sh && sudo chmod 755 telos_3mn1vps.sh && .telos_3mn1vps.sh
+wget https://raw.githubusercontent.com/hexter2018/masternode/master/transcendence_3mn1vps.sh && sudo chmod 755 transcendence_3mn1vps.sh && ./transcendence_3mn1vps.sh
 </pre></code>
 
 License
