@@ -18,6 +18,11 @@ TELOS 1 MN:
 wget https://raw.githubusercontent.com/hexter2018/masternode/master/TELOS.sh && sudo chmod 755 TELOS.sh && ./TELOS.sh
 </pre></code>
 
+TELOS 3 MN in 1 VPS:
+<pre><code>
+wget https://raw.githubusercontent.com/hexter2018/masternode/master/telos_3mn1vps.sh && sudo chmod 755 telos_3mn1vps.sh && .telos_3mn1vps.sh
+</pre></code>
+
 License
 Released under the MIT license.
 
