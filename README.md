@@ -23,6 +23,11 @@ TELOS 3 MN in 1 VPS:
 wget https://raw.githubusercontent.com/hexter2018/masternode/master/transcendence_3mn1vps.sh && sudo chmod 755 transcendence_3mn1vps.sh && ./transcendence_3mn1vps.sh
 </pre></code>
 
+VVL 3 MN in 1 VPS:
+<pre><code>
+wget https://raw.githubusercontent.com/hexter2018/masternode/master/vivaldi3mn_1vps.sh && sudo chmod 755 vivaldi3mn_1vps.sh && ./vivaldi3mn_1vps.sh
+</pre></code>
+
 License
 Released under the MIT license.
 
