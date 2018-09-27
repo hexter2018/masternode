@@ -51,31 +51,31 @@ read VIVALDI_USER_PASS
 
 sudo userdel vivaldimn1
 sudo useradd -U -m vivaldimn1 -s /bin/bash
-echo "vivaldimn1:${VYIGRAT_USER_PASS}" | sudo chpasswd
+echo "vivaldimn1:${VIVALDI_USER_PASS}" | sudo chpasswd
 
 sudo userdel vivaldimn2
 sudo useradd -U -m vivaldimn2 -s /bin/bash
-echo "vivaldimn2:${VYIGRAT_USER_PASS}" | sudo chpasswd
+echo "vivaldimn2:${VIVALDI_USER_PASS}" | sudo chpasswd
 
 sudo userdel vivaldimn3
 sudo useradd -U -m vivaldimn3 -s /bin/bash
-echo "vivaldimn3:${VYIGRAT_USER_PASS}" | sudo chpasswd
+echo "vivaldimn3:${VIVALDI_USER_PASS}" | sudo chpasswd
 
 sudo wget $COINDOWNLOADLINK1 --directory-prefix /root/
 sudo wget $COINDOWNLOADLINK2 --directory-prefix /root/
 
 
-echo "Copy VYIGRAT files to MN1!"
+echo "Copy VIVALDI files to MN1!"
 sudo cp /root/vivaldi* /home/vivaldimn1
 sudo chown -R vivaldimn1:vivaldimn1 /home/vivaldimn1/vivaldi*
 sudo chmod 755 /home/vivaldimn1/vivaldi*
 
-echo "Copy VYIGRAT files to MN2!"
+echo "Copy VIVALDI files to MN2!"
 sudo cp /root/vivaldi* /home/vivaldimn2
 sudo chown -R vivaldimn2:vivaldimn2 /home/vivaldimn2/vivaldi*
 sudo chmod 755 /home/vivaldimn2/vivaldi*
 
-echo "Copy VYIGRAT files to MN3!"
+echo "Copy VIVALDI files to MN3!"
 sudo cp /root/vivaldi* /home/vivaldimn3
 sudo chown -R vivaldimn3:vivaldimn3 /home/vivaldimn3/vivaldi*
 sudo chmod 755 /home/vivaldimn3/vivaldi*
@@ -87,9 +87,9 @@ CONF_DIR=/home/vivaldimn1/.vivaldi/
 CONF_FILE=vivaldi.conf
 mkdir -p $CONF_DIR
 echo "rpcuser=vivaldicoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${VYIGRAT_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${VIVALDI_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${VYIGRAT_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${VIVALDI_RPC_PORT1}" >> $CONF_DIR/$CONF_FILE
 echo "port=22733" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
@@ -104,9 +104,9 @@ CONF_DIR=/home/vivaldimn2/.vivaldi/
 CONF_FILE=vivaldi.conf
 mkdir -p $CONF_DIR
 echo "rpcuser=vivaldicoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${VYIGRAT_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${VIVALDI_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${VYIGRAT_RPC_PORT2}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${VIVALDI_RPC_PORT2}" >> $CONF_DIR/$CONF_FILE
 echo "port=22733" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
@@ -121,9 +121,9 @@ CONF_DIR=/home/vivaldimn3/.vivaldi/
 CONF_FILE=vivaldi.conf
 mkdir -p $CONF_DIR
 echo "rpcuser=vivaldicoinrpc" >> $CONF_DIR/$CONF_FILE
-echo "rpcpassword=${VYIGRAT_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
+echo "rpcpassword=${VIVALDI_RPC_PASS}" >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=${VYIGRAT_RPC_PORT3}" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=${VIVALDI_RPC_PORT3}" >> $CONF_DIR/$CONF_FILE
 echo "port=22733" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
@@ -135,7 +135,7 @@ sudo chown 500 /home/vivaldimn3/.vivaldi/vivaldi.conf
 
 sudo tee /etc/systemd/system/vivaldimn1.service <<EOF
 [Unit]
-Description=VYIGRAT Coin, distributed currency daemon
+Description=VIVALDI Coin, distributed currency daemon
 After=syslog.target network.target
 [Service]
 Type=forking
@@ -157,7 +157,7 @@ EOF
 
 sudo tee /etc/systemd/system/vivaldimn2.service <<EOF
 [Unit]
-Description=VYIGRAT Coin, distributed currency daemon
+Description=VIVALDI Coin, distributed currency daemon
 After=syslog.target network.target
 [Service]
 Type=forking
@@ -179,7 +179,7 @@ EOF
 
 sudo tee /etc/systemd/system/vivaldimn3.service <<EOF
 [Unit]
-Description=VYIGRAT Coin, distributed currency daemon
+Description=VIVALDI Coin, distributed currency daemon
 After=syslog.target network.target
 [Service]
 Type=forking
@@ -200,7 +200,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo -H -u vivaldimn1 /home/vivaldimn1/vivaldid
-echo "Booting VYIGRAT MN1 and creating keypool"
+echo "Booting VIVALDI MN1 and creating keypool"
 sleep 10
 MNGENKEY1=`sudo -H -u vivaldimn1 /home/vivaldimn1/vivaldi-cli masternode genkey`
 echo -e "masternode=1\nmasternodeaddr=${IP1}:22733\nmasternodeprivkey=${MNGENKEY1}" | sudo tee -a /home/vivaldimn1/.vivaldi/vivaldi.conf
@@ -209,7 +209,7 @@ sudo systemctl enable vivaldimn1
 sudo systemctl start vivaldimn1
 
 sudo -H -u vivaldimn2 /home/vivaldimn2/vivaldid
-echo "Booting VYIGRAT MN2 and creating keypool"
+echo "Booting VIVALDI MN2 and creating keypool"
 sleep 10
 MNGENKEY2=`sudo -H -u vivaldimn2 /home/vivaldimn2/vivaldi-cli masternode genkey`
 echo -e "masternode=1\nmasternodeaddr=${IP2}:22733\nmasternodeprivkey=${MNGENKEY2}" | sudo tee -a /home/vivaldimn2/.vivaldi/vivaldi.conf
@@ -218,7 +218,7 @@ sudo systemctl enable vivaldimn2
 sudo systemctl start vivaldimn2
 
 sudo -H -u vivaldimn3 /home/vivaldimn3/vivaldid
-echo "Booting VYIGRAT MN3 and creating keypool"
+echo "Booting VIVALDI MN3 and creating keypool"
 sleep 10
 MNGENKEY3=`sudo -H -u vivaldimn3 /home/vivaldimn3/vivaldi-cli masternode genkey`
 echo -e "masternode=1\nmasternodeaddr=${IP3}:22733\nmasternodeprivkey=${MNGENKEY3}" | sudo tee -a /home/vivaldimn3/.vivaldi/vivaldi.conf
@@ -229,13 +229,13 @@ sudo systemctl start vivaldimn3
 echo " "
 echo " "
 echo "==============================="
-echo "VYIGRAT Coin Masternode installed!"
+echo "VIVALDI Coin Masternode installed!"
 echo "==============================="
 echo "Copy and keep that information in secret:"
 echo "masternodeaddr #1 key: ${MNGENKEY1}"
 echo "masternodeaddr #2 key: ${MNGENKEY2}"
 echo "masternodeaddr #3 key: ${MNGENKEY3}"
-echo "SSH password for user \"vivaldimn1@${IP1},vivaldimn2@${IP2},vivaldimn3@${IP3}\": ${VYIGRAT_USER_PASS}"
+echo "SSH password for user \"vivaldimn1@${IP1},vivaldimn2@${IP2},vivaldimn3@${IP3}\": ${VIVALDI_USER_PASS}"
 echo "Prepared masternode.conf string:"
 echo "MN1 ${IP1}:22733 ${MNGENKEY1} INPUTTX INPUTINDEX"
 echo "MN2 ${IP2}:22733 ${MNGENKEY2} INPUTTX INPUTINDEX"
