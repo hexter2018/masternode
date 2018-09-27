@@ -27,6 +27,21 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+sudo apt-get install bc git nano rpl wget python-virtualenv -qq -y > /dev/null 2>&1
+sudo apt-get install build-essential libtool automake autoconf -qq -y > /dev/null 2>&1
+sudo apt-get install autotools-dev autoconf pkg-config libssl-dev -qq -y > /dev/null 2>&1
+sudo apt-get install libgmp3-dev libevent-dev bsdmainutils libboost-all-dev -qq -y > /dev/null 2>&1
+sudo apt-get install software-properties-common python-software-properties -qq -y > /dev/null 2>&1
+sudo add-apt-repository ppa:bitcoin/bitcoin -y > /dev/null 2>&1
+sudo apt-get update -qq -y > /dev/null 2>&1
+sudo apt-get upgrade -qq -y > /dev/null 2>&1
+sudo apt-get install libdb4.8-dev libdb4.8++-dev -qq -y > /dev/null 2>&1
+sudo apt-get install libminiupnpc-dev -qq -y > /dev/null 2>&1
+sudo apt-get install libzmq5 -qq -y > /dev/null 2>&1
+sudo apt-get install virtualenv -qq -y > /dev/null 2>&1
+sudo apt-get update -qq -y > /dev/null 2>&1
+sudo apt-get upgrade -qq -y > /dev/null 2>&1
+
 sudo apt-get install unzip -y
 
 VYIGRAT_LINUX_URL=https://github.com/vyigrat/vyigrat/releases/download/v1.3.0.0/linux-1.3.0.0.zip
